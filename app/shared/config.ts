@@ -1,5 +1,6 @@
 export class Config {
-  static apiPostUrl = "https://httpbin.org/post";
+  static apiUrl = "https://httpbin.org";
+  //"https://api.everlive.com/v1/GWfRtXi1Lwt4jcqK";
   static get token():string {
     return <string>localStorage.getItem("token");
   }

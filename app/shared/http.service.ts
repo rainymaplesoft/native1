@@ -4,7 +4,6 @@ import { Observable } from "rxjs/Rx";
 import "rxjs/add/operator/do";
 import "rxjs/add/operator/map";
 
-import { Config } from "./config";
 
 @Injectable()
 export class HttpService {
@@ -15,10 +14,7 @@ export class HttpService {
         this.requestOptions = this.createRequestOptions();
     }
 
-    post(stringyfiedModel: string, urlApi? : string): Observable<Response> {
-        if (!urlApi) {
-            urlApi = Config.apiPostUrl;
-        }
+    post(urlApi: string, stringyfiedModel: string): Observable<Response> {
         return this.http.post(urlApi, stringyfiedModel, this.requestOptions)
             .catch(this.handleErrors);
     }
