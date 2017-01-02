@@ -1,2 +1,17 @@
-<Label text="List Component " textWrap="true"></Label>
+<GridLayout rows="auto,*" columns="">
 
+    <GridLayout rows="" columns="*,auto" class="add-bar" row="0">
+        <TextField hint="Enter an item" [(ngModel)]="grocery" #groceryTextField col="0"></TextField>
+        <Image src="res://add" col="1" (tap)="add()"></Image>
+    </GridLayout>
+
+    <ListView [items]="groceryList" class="small-spacing" row="1" [visibility]="!isLoading ? 'visible' : 'collapsed'" [class.visible]="!isLoading">
+        <template let-item="item">
+            <StackLayout>
+                <Label [text]="item.name" class="medium-spacing"></Label>
+            </StackLayout>
+        </template>
+    </ListView>
+
+    <ActivityIndicator [busy]='isLoading' [visibility]="isLoading ? 'visible' : 'collapsed'" row='1'> </ActivityIndicator>
+</GridLayout>

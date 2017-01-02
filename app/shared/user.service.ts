@@ -15,18 +15,24 @@ export class UserService {
     }
 
     register(user: User): Observable<User> {
-        return this.HttpService.post(Config.apiUrl + '/post', JSON.stringify(user))
+        return this.HttpService.post(Config.urlRegister, JSON.stringify(user))
             .map(result => <User>result.json().json);
         //.do(r => console.log(JSON.stringify(r));
     }
 
     login(user: User): Observable<Response> {
-        let url = Config.apiUrl + "/post";
+        let url = Config.urlLogin;
         let data = JSON.stringify({
             username: user.email,
             password: user.password,
             grant_type: "password"
         });
-        return this.HttpService.post(url, data);
+        return this.HttpService.post(url, data)
+            .do(result => Config.token = 'abc123');
+        //.do(result =>Config.token = result.access_token;);
+    }
+
+    logoff() {
+        Config.token = "";
     }
 }

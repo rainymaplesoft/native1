@@ -1,0 +1,18 @@
+.add-bar{
+    background-color: teal;
+}
+.add-bar Image{
+    margin-left:10;
+    margin-right:10;
+}
+ListView {
+  opacity: 0;
+}
+.visible {
+  animation-name: show;
+  animation-duration: 1s;
+}
+@keyframes show {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

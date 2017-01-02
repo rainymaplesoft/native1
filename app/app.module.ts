@@ -7,6 +7,7 @@ import { NativeScriptModule } from "nativescript-angular/platform";
 import { AppComponent } from "./app.component";
 import { navigatableComponents, routes } from "./app.routing";
 import { HttpService } from "./shared/http.service";
+import { GroceryService } from './shared/grocery/grocery.service'
 
 @NgModule({
     imports: [
@@ -20,7 +21,7 @@ import { HttpService } from "./shared/http.service";
         AppComponent,
         ...navigatableComponents
     ],
-    providers: [HttpService],
+    providers: [HttpService, GroceryService],
     bootstrap: [AppComponent],
     schemas: [NO_ERRORS_SCHEMA]
 })

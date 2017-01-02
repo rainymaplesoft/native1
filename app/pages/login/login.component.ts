@@ -1,8 +1,10 @@
-import { Component } from "@angular/core";
+import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { Router } from "@angular/router";
 import { User } from "../../shared/user";
+import { Color } from "color";
+import { View } from "ui/core/view"
 import { UserService } from "../../shared/user.service";
-import { } from ""
+import { Page } from "ui/page"
 
 
 @Component({
@@ -11,19 +13,30 @@ import { } from ""
     templateUrl: "pages/login/login.html",
     styleUrls: ['pages/login/login-common.css', 'pages/login/login.css'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
     public user: User;
     email = "nativescriptrocks@telerik.com";
     isLoggingIn = true;
+    @ViewChild("container") container: ElementRef;
 
-    constructor(private router: Router, private userService: UserService) {
+    constructor(private page: Page, private router: Router, private userService: UserService) {
         this.user = new User();
         this.user.email = "user@nativescript.org";
         this.user.password = "password";
     }
 
+    ngOnInit() {
+        this.page.actionBarHidden = true;
+        this.page.backgroundImage = "res://bg_login";
+    }
+    
     toggleDisplay(): void {
         this.isLoggingIn = !this.isLoggingIn;
+        let cont = <View>this.container.nativeElement;
+        cont.animate({
+            backgroundColor:this.isLoggingIn?new Color("white"):new Color('#301217'),
+            duration:200
+        });
     }
 
     public submit() {
@@ -42,7 +55,7 @@ export class LoginComponent {
             (error) => alert("Failed to authenticate")
             );
     }
-    
+
     signUp() {
         this.userService.register(this.user)
             .subscribe(

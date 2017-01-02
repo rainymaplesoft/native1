@@ -3,6 +3,7 @@ import { Http, Headers, Response, RequestOptions } from "@angular/http";
 import { Observable } from "rxjs/Rx";
 import "rxjs/add/operator/do";
 import "rxjs/add/operator/map";
+import { Config } from "../shared/config";
 
 
 @Injectable()
@@ -14,8 +15,8 @@ export class HttpService {
         this.requestOptions = this.createRequestOptions();
     }
 
-    post(urlApi: string, stringyfiedModel: string): Observable<Response> {
-        return this.http.post(urlApi, stringyfiedModel, this.requestOptions)
+    post(url: string, stringyfiedModel: string): Observable<Response> {
+        return this.http.post(url, stringyfiedModel, this.requestOptions)
             .catch(this.handleErrors);
     }
 
@@ -30,8 +31,10 @@ export class HttpService {
 
     private createRequestOptions() {
         let headers = new Headers();
-        headers.append("AuthKey", "my-key");
-        headers.append("AuthToken", "my-token");
+        //headers.append("AuthKey", "my-key");
+        if (Config.isLoggedIn) {
+            headers.append("Authorization", "Bearer " + Config.token);
+        }
         headers.append("Content-Type", "application/json");
         let options = new RequestOptions({ headers: headers });
         return options;
