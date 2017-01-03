@@ -1,3 +1,4 @@
+import * as SocialShare from "nativescript-social-share";
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { TextField } from "ui/text-field";
 import { GroceryService } from "../../shared/grocery/grocery.service";
@@ -54,5 +55,14 @@ export class ListComponent implements OnInit {
                 });
                 this.grocery = '';
             });
+    }
+
+    share(){
+        let list=[];
+        for(let item of this.groceryList){
+            list.push(item.name);
+        }
+        let listString = list.join(', ').trim();
+        SocialShare.shareText(listString);
     }
 }
