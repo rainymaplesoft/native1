@@ -1,1 +1,1 @@
-@import url(nativescript-theme-core/css/core.light.css);@import url("~/platform.css");.btn{font-size:18}Page{background-color:white;font-size:15}TextField{padding:10;font-size:13}.small-spacing{margin:5}.medium-spacing{margin:10}
+@import url(nativescript-theme-core/css/core.light.css);@import url("~/platform.css");.btn{font-size:18}Page{background-color:white;font-size:15}TextField{padding:10;font-size:13}.small-spacing{margin:5}.medium-spacing{margin:10}.font-awesome-label{font-size:16;color:orangered;margin:10,10,10,0;font-family:'FontAwesome', fontawesome-webfont}

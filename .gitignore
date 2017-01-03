@@ -31,4 +31,4 @@ node_modules/
 platforms/
 app/**/*.js
 app/**/*.js.map
-
+app/**/*.css

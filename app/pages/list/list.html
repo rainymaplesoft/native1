@@ -2,7 +2,9 @@
 
     <GridLayout rows="" columns="*,auto" class="add-bar" row="0">
         <TextField hint="Enter an item" [(ngModel)]="grocery" #groceryTextField col="0"></TextField>
-        <Image src="res://add" col="1" (tap)="add()"></Image>
+        <!--<Image src="res://add" col="1" (tap)="add()"></Image>-->
+        <Label text="&#xf067; Add" class='font-awesome-label' (tap)="add()" col="1"></Label>
+        
     </GridLayout>
 
     <ListView [items]="groceryList" class="small-spacing" row="1" [visibility]="!isLoading ? 'visible' : 'collapsed'" [class.visible]="!isLoading">

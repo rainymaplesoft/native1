@@ -1,3 +1,18 @@
 {
-    "typescript.check.workspaceVersion": false
+    "typescript.check.workspaceVersion": false,
+    "editor.fontSize": 18,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/.DS_Store": true,
+        "**/*.js": {
+            "when": "$(basename).ts"
+        },
+        "**/*.js.map": {
+            "when": "$(basename)"
+        },
+        "app/**/*.css": true
+    },
+    "workbench.statusBar.visible": true
 }
